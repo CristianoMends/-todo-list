@@ -1,0 +1,68 @@
+.task-card {
+  box-shadow: 0px 2px 3px #aaaf;
+  background-color: aliceblue;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  position: relative;
+  height: 40px;
+  transition: height 0.1s linear;
+  padding: 0 0 0 30px;
+  width: 800px;
+  border-radius: 5px;
+}
+
+.icon-finished {
+  position: absolute;
+  left: 0px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.title-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 20px 0 10px;
+}
+
+.description {
+  height: 150px;
+}
+
+.expanded {
+  height: 300px;
+}
+
+.manager {
+  margin-right: 10px;
+  gap: 5px;
+  display: flex;
+}
+
+h3 {
+  text-align: start;
+  padding: 0;
+  margin: 10px 0 0 0;
+  padding: 0;
+  user-select: none;
+}
+
+p {
+  margin: 15px;
+}
+
+.date-container {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+}
+
+button {
+  background-color: transparent;
+  color: black;
+  box-shadow: none;
+}
