@@ -1,0 +1,23 @@
+<form class="task-form" (ngSubmit)="submit()" #taskForm="ngForm">
+    <mat-form-field>
+        <mat-label>Título</mat-label>
+        <input matInput [(ngModel)]="title" name="title" required>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Data de vencimento</mat-label>
+        <input matInput [matDatepicker]="picker" [(ngModel)]="dueDate" name="dueDate" required>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Descrição</mat-label>
+        <textarea maxlength="254" matInput [(ngModel)]="description" name="description"></textarea>
+    </mat-form-field>
+
+    <button mat-mini-fab extended type="submit" [disabled]="taskForm.invalid || dueDate! < today">
+        <mat-icon>add</mat-icon>
+        Adicionar
+    </button>
+</form>
