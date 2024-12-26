@@ -1,9 +1,6 @@
 package edu.ufc.todo.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDate;
 
@@ -11,12 +8,13 @@ import java.time.LocalDate;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 public class SearchTaskDto {
 
     private Long id;
     private String title;
     private String description;
-    private boolean completed;
+    private Boolean completed;
     private LocalDate startDueDate;
     private LocalDate endDueDate;
     private LocalDate startCreatedAt;
