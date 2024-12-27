@@ -1,15 +1,22 @@
-<div [class]="expanded ? 'task-card expanded' : 'task-card'">
+<div [class]="expanded ? 'task-card expanded' : 'task-card'" 
+    [ngClass]="{
+      'anim-initial': !deleted, 
+      'anim-deleted': deleted
+    }"
+    [ngStyle]="{'animation-delay': getAnimDelay()}"
+
+    >
   <div class="icon-finished">
-    <mat-checkbox [checked]="completed" (change)="onToggleChange($event)"></mat-checkbox>
+    <mat-checkbox [checked]="completed" (change)="onToggleCompletionStatus($event)"></mat-checkbox>
   </div>
 
   <div class="title-container">
     <h3 [style]="completed?'text-decoration: line-through':''">{{ title }}</h3>
     <div class="manager">
-      <button *ngIf="expanded" mat-mini-fab aria-label="Botão para deletar tarefa">
+      <button mat-mini-fab aria-label="Botão para deletar tarefa" (click)="deleteTask()">
         <mat-icon>delete</mat-icon>
       </button>
-      <button *ngIf="expanded" [disabled]="completed" mat-mini-fab aria-label="Botão para editar tarefa">
+      <button [disabled]="completed" mat-mini-fab aria-label="Botão para editar tarefa" (click)="editTask()">
         <mat-icon>edit</mat-icon>
       </button>
       <button mat-mini-fab aria-label="Botão para expandir caixa da tarefa" (click)="expanded = !expanded">
@@ -25,16 +32,17 @@
     <p *ngIf="!completed">{{ getDaysRemaining() }}</p>
   </div>
 </div>
+
 <ng-template #dialogTemplate let-data>
-  <h2 mat-dialog-title>Tem certeza de que deseja marcar a tarefa como {{ !completed ? 'finalizada' : 'não finalizada'
-    }}?</h2>
+  <h2 mat-dialog-title>{{ dialogMessage }}</h2>
   <mat-dialog-content>
-    <p>Essa ação irá {{ !completed ? 'finalizar' : 'reverter' }} a tarefa, alterando seu status. Você poderá alterar o
-      status novamente a qualquer momento.</p>
-    <p>Deseja continuar?</p>
+    <p>Você deseja continuar?</p>
   </mat-dialog-content>
   <mat-dialog-actions>
     <button mat-button mat-dialog-close>Cancelar</button>
     <button mat-button [mat-dialog-close]="true" color="primary">Confirmar</button>
   </mat-dialog-actions>
 </ng-template>
+
+<app-task-form></app-task-form>
+<app-message></app-message>
