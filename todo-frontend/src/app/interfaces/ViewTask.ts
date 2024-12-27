@@ -5,5 +5,5 @@ export interface ViewTask {
     completed: boolean;
     createdAt: Date;
     dueDate: Date;
-    finishedAt: Date;
+    finishedAt: Date | null;
 }
