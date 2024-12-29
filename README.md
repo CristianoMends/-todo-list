@@ -1,8 +1,7 @@
-# Todo List com Docker, Angular, Java e PostgreSQL
-
+<h1 align="center">Todo List com Docker, Angular, Java e PostgreSQL</h1>
 Este repositório contém o código-fonte de uma aplicação de gerenciamento de tarefas, desenvolvida utilizando Docker, Angular, Java, e PostgreSQL. O objetivo deste projeto é aprender e aplicar conceitos de Docker na disciplina de Gerência de Configuração do curso de Engenharia de Software da Universidade Federal do Ceará (UFC).
 
-<div>
+<div align="center">
     <a href="#tech">Tecnologias</a> ◽ 
     <a href="#func">Funcionalidades</a> ◽ 
     <a href="#obj">Objetivo</a> ◽ 
