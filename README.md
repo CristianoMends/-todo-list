@@ -68,6 +68,12 @@ docker-compose up
 ```bash
 http://localhost:4200
 ```
+### Scripts
+
+Para facilitar, você pode baixar o script de instalação para configurar tudo automaticamente.
+
+- Script para Windows: [install.bat](https://github.com/CristianoMends/todo-list/releases/download/v1.0.0/install.bat)
+- Script para Linux/macOS: [install.sh](https://github.com/CristianoMends/todo-list/releases/download/v1.0.0/install.sh)
 
 ### Testando Persistência de Dados
 
@@ -153,4 +159,4 @@ O comando ``CMD ["nginx" ,"-g","daemon off;"]`` mantém o contêiner ativo servi
 
 Confira o funcionamento completo da aplicação no vídeo abaixo:
 
-[![Assista ao vídeo](https://img.youtube.com/vi/SEU_VIDEO_ID/maxresdefault.jpg)](https://www.youtube.com/watch?v=SEU_VIDEO_ID)
+[![Assista ao vídeo](https://img.youtube.com/vi/nw4zmbIkHdU/0.jpg)](https://www.youtube.com/watch?v=nw4zmbIkHdU)
