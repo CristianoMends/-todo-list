@@ -1,0 +1,113 @@
+.task-card {
+  box-shadow: 0px 2px 3px #aaaf;
+  background-color: aliceblue;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  position: relative;
+  transition: height 0.1s linear;
+  padding: 0 0 0 30px;
+  height: 40px;
+  width: 800px;
+  border-radius: 5px;
+  animation: appear 0.1s ease-out forwards;
+  transform: translateX(-200vh);
+}
+
+.icon-finished {
+  position: absolute;
+  left: 0px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.anim-deleted {
+  animation: remove 0.5s ease-in forwards;
+}
+
+@keyframes remove {
+  0% {}
+
+  100% {
+    opacity: 0;
+    height: 0;
+    margin: 0;
+    padding: 0;
+    opacity: 0;
+    transform: translateX(-100vh);
+  }
+}
+
+
+
+.title-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 20px 0 10px;
+}
+
+.description {
+  height: 150px;
+}
+
+.expanded {
+  height: 200px;
+}
+
+.manager {
+  margin-right: 10px;
+  gap: 5px;
+  display: flex;
+}
+
+h3 {
+  text-align: start;
+  padding: 0;
+  margin: 10px 0 0 0;
+  padding: 0;
+  user-select: none;
+}
+
+p {
+  margin: 15px;
+}
+
+.date-container {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+}
+
+button {
+  background-color: transparent;
+  color: black;
+  box-shadow: none;
+}
+
+button:disabled {
+  background-color: transparent;
+}
+
+button:hover,
+mat-checkbox:hover {
+  background-color: transparent;
+  box-shadow: none;
+  filter: drop-shadow(3px 2px 3px #aaaf);
+  scale: 1.1;
+}

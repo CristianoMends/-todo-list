@@ -1,0 +1,48 @@
+<div [class]="expanded ? 'task-card expanded' : 'task-card'" 
+    [ngClass]="{
+      'anim-initial': !deleted, 
+      'anim-deleted': deleted
+    }"
+    [ngStyle]="{'animation-delay': getAnimDelay()}"
+
+    >
+  <div class="icon-finished">
+    <mat-checkbox [checked]="completed" (change)="onToggleCompletionStatus($event)"></mat-checkbox>
+  </div>
+
+  <div class="title-container">
+    <h3 [style]="completed?'text-decoration: line-through':''">{{ title }}</h3>
+    <div class="manager">
+      <button mat-mini-fab aria-label="Botão para deletar tarefa" (click)="deleteTask()">
+        <mat-icon>delete</mat-icon>
+      </button>
+      <button [disabled]="completed" mat-mini-fab aria-label="Botão para editar tarefa" (click)="editTask()">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-mini-fab aria-label="Botão para expandir caixa da tarefa" (click)="expanded = !expanded">
+        <mat-icon>{{ expanded ? 'expand_less' : 'expand_more' }}</mat-icon>
+      </button>
+    </div>
+  </div>
+  <p class="description">{{ description }}</p>
+  <div class="date-container">
+    <p><strong>Vence em:</strong> {{ dueDate | date: 'dd/MM/yyyy' }}</p>
+    <p *ngIf="completed"><strong>Finalizado em:</strong> {{ finishedAt ? (finishedAt | date: 'dd/MM/yyyy') : 'N/A' }}
+    </p>
+    <p *ngIf="!completed">{{ getDaysRemaining() }}</p>
+  </div>
+</div>
+
+<ng-template #dialogTemplate let-data>
+  <h2 mat-dialog-title>{{ dialogMessage }}</h2>
+  <mat-dialog-content>
+    <p>Você deseja continuar?</p>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-button mat-dialog-close>Cancelar</button>
+    <button mat-button [mat-dialog-close]="true" color="primary">Confirmar</button>
+  </mat-dialog-actions>
+</ng-template>
+
+<app-task-form></app-task-form>
+<app-message></app-message>

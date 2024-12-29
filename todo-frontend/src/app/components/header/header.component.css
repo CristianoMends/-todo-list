@@ -1,0 +1,12 @@
+
+
+header{
+    padding: 15px;
+    color: #ff4081;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+h1{
+    font-size: 3em;
+}

@@ -1,0 +1,50 @@
+services:
+
+  db:
+    image: postgres:16
+    container_name: todo-postgres-db
+    environment:
+      POSTGRES_DB: todo_db  
+      POSTGRES_USER: ${DB_USERNAME}  
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - "5433:5432" 
+    volumes:
+      - db-data:/var/lib/postgresql/data  
+      - ./scripts/init.sql:/docker-entrypoint-initdb.d/init.sql 
+    networks:
+      - todo-network
+    restart: always
+
+  todo-api:
+    build:
+      context: ./todo-backend 
+    container_name: todo-api  
+    environment:
+      DB_URL: ${DB_URL} 
+      DB_USERNAME: ${DB_USERNAME} 
+      DB_PASSWORD: ${DB_PASSWORD}
+    depends_on:
+      - db
+    ports:
+      - "8080:8080"
+    networks:
+      - todo-network
+    restart: always
+
+  todo-app:
+    build:
+      context: ./todo-frontend 
+    container_name: todo-app
+    depends_on:
+      - todo-api
+    ports:
+      - "4200:80"
+    restart: always
+    
+networks:
+  todo-network:
+    driver: bridge
+
+volumes:
+  db-data:  

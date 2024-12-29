@@ -1,0 +1,33 @@
+<app-header></app-header>
+<main>
+  <section class="form-container">
+    <app-task-form></app-task-form>
+  </section>
+  <button mat-mini-fab extended (click)="openTaskForm()">
+    <mat-icon>add</mat-icon>
+  </button>
+  <mat-divider></mat-divider>
+
+  <section class="sort-buttons">
+    <button [disabled]="getTasks().length < 2" mat-stroked-button (click)="sortBy('createdAt')">Ordenar por Criação</button>
+    <button [disabled]="getTasks().length < 2" mat-stroked-button (click)="sortBy('dueDate')">Ordenar por Vencimento</button>
+    <button [disabled]="getTasks().length < 2" mat-stroked-button (click)="sortBy('completed')">Ordenar por Status</button>
+  </section>
+
+<section class="tasks-container">
+    <app-task-card *ngFor="let task of getTasks(); let i = index"
+      [delay]="i * 100"      
+      [id]="task.id"
+      [title]="task.title"
+      [description]="task.description"
+      [completed]="task.completed"
+      [createdAt]="task.createdAt"
+      [dueDate]="task.dueDate"
+      [finishedAt]="task.finishedAt">
+    </app-task-card>
+  </section>
+</main>
+<footer>
+  <p>&copy; Cristiano Mendes</p>
+</footer>
+<app-message></app-message>
